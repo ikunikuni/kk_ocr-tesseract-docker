@@ -13,6 +13,7 @@ RUN apt-get update \
 
 RUN apt update \
   && apt-get install ffmpeg libsm6 libxext6 -y
+RUN pip3 install pytesseract
 
 COPY . /app
 WORKDIR /app
