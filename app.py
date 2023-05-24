@@ -80,7 +80,7 @@ def mynum():
         img_file = request.files['filename2']
 
         # OCRツールの初期化
-        reader = easyocr.Reader(['ja'], gpu=False, model_storage_directory='ocr_model')
+        # reader = easyocr.Reader(['ja'], gpu=False, model_storage_directory='ocr_model')
         tools = pyocr.get_available_tools()
         tool = tools[0]
 
@@ -90,9 +90,9 @@ def mynum():
         img_gen = cv2.imdecode(img_np, cv2.IMREAD_COLOR)
 
         # EasyOCRを使用して性別を抽出
-        img_gray = cv2.cvtColor(img_gen, cv2.COLOR_BGR2GRAY)
-        txt_gender = reader.readtext(img_gray)
-        gender = detect_gender(txt_gender)
+        # img_gray = cv2.cvtColor(img_gen, cv2.COLOR_BGR2GRAY)
+        # txt_gender = reader.readtext(img_gray)
+        # gender = detect_gender(txt_gender)
 
         #PyOCRを使用して生年月日を抽出
         img_pil = Image.open(io.BytesIO(img_bytes))
@@ -102,8 +102,8 @@ def mynum():
         age = detect_birthdate(txt_age)
 
         # 結果をレンダリングするテンプレートに渡してレスポンスを返す
-        # return render_template('result_mynum.html', age=age)
-        return render_template('result_mynum.html', gender=gender, age=age)
+        return render_template('result_mynum.html', age=age)
+        # return render_template('result_mynum.html', gender=gender, age=age)
     else:
         # テンプレートの読み込み
         return render_template('mynum.html')
