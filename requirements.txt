@@ -10,5 +10,5 @@ torchmetrics==0.8.2
 pyocr==0.8.3
 pytesseract==0.3.9
 easyocr==1.6.2
-numpy==1.23.5
+numpy==1.19.5
 opencv-python-headless====4.5.3.56
